@@ -1,0 +1,81 @@
+//variables
+$font-stack:    Helvetica, sans-serif;
+$primary-color: #333;
+$background-color: #FFFF99;
+
+body {
+  font: 100% $font-stack;
+  color: $primary-color;
+}
+
+//nesting
+nav {
+  background-color: $background-color;
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li { display: inline-block; }
+
+  a {
+    display: block;
+    padding: 6px 12px;
+    text-decoration: none;
+  }
+}
+
+//import -- make sure that the partial file is in the same directory as the input/output files
+@import '_partial';
+
+//mixins
+@mixin coolParagraphs($radius, $color, $direction) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+          color: $color;
+          border: 2px solid $color;
+          padding: 50px;
+          float: $direction;
+          margin-left: 100px;
+          margin-right: 100px;
+}
+
+.foo { @include coolParagraphs(25px, #0000ff, right); }
+.boo { @include coolParagraphs(5px, #008000, left); }
+
+//extend
+//%equal-heights IS NOT extended, so it will NOT be written to output.css
+%equal-heights {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+//%wow IS extended, so it will be written to output.css
+%wow {
+  padding: random(120) + px; //built in css function, returns a number 1-120 (default 100)
+  color: black;
+}
+
+.wow-default {
+  @extend %wow;
+}
+
+.wow-fancy {
+  @extend %wow;
+  color: red;
+  text-decoration: underline;
+  text-shadow: 2px 2px #D3D3D3;
+}
+
+//conditional
+@mixin conditional($number) {
+  @if $number == 0 {
+    color: blue;
+  }
+  @else {
+    color: red;
+  }
+}
