@@ -18,11 +18,13 @@
 
     </br>
     <h3>What is Sass?</h3>
-    <p>Sass is a CSS preprocessor that simplifies writing CSS. It adds a lot of features of programming languages to CSS, from functions to loops and much more. Sass makes more sense when writing CSS from a human point of view, and makes it so that you stay DRY (you Don't Repeat Yourself).</p>
+    <p>Sass is a CSS preprocessor that simplifies writing CSS. It adds a lot of features of programming languages to CSS, from functions to loops and much more. Sass makes more sense when writing CSS from a human point of view, and makes it so that you stay <b>DRY</b> (Don't Repeat Yourself).</p>
     <p>Sass was created in 2006 by Hampton Caitlin and Natalie Weizenbaum, and Sass files originally ended in .sass. However, in the newest version of Sass, files end in .scss. .sass files use indentation rather than brackets to indicate the nesting of selectors, use newlines rather than semicolons to separate properties, and the syntax is more similar to that of Ruby, while .scss files are more like CSS.</p>
-    <img src="diffs.jpg">
+
+    <img style="width:40%;" src="diffs.jpg">
 
     </br>
+
     <h3>So how does it work?</h3>
 
     <h4>Installing and Using Sass</h4>
@@ -34,20 +36,72 @@
       <li>Run "sass [INPUT FILENAME] [OUTPUT FILENAME]" to convert to CSS</li>
     </ul>
 
-    <h4>Functions in Sass</h4>
-    <p>Like most other programming languages, Sass allows you to create and define functions, making writing CSS a lot more efficient. In Sass, functions are declared using "@function", parameters are denoted with a "$" followed by the name, and the return statement is denoted with "@return".</p>
+    <br>
+
+    <h3>Features</h3>
+
+    <h4>Nesting</h4>
+    <p>Nesting helps us to stay DRY. Rather than having to repreat ourselves in declaring "nav" every time we want write CSS for a certain nav element, we can just nest the tags for these elements in the greater nav tag, indicating that these features all apply to different elements in the nav.</p>
+    <img src="nestingscss.png">
+    <p>This translates to the CSS file below.</p>
+    <img src="nestingcss.png">
+
+    <h4>Functions</h4>
+    <p>Like most other programming languages, Sass allows you to create and define functions, making writing CSS a lot more efficient. In Sass, functions are declared using "@function", variables are denoted with a "$" followed by the name, and the return statement is denoted with "@return".</p>
     <img src="sass1.PNG"> <img src="sass2.PNG">
     <p>As shown in the above example, creating functions in Sass can prove to be very useful. And when your Sass is converted into CSS, your code is ultimately much cleaner, efficient, and user-friendly.</p>
 
-    <h4>Loops in Sass</h4>
+    <h4>Loops</h4>
     <p>Like functions, loops are another feature of Sass that isn't present in CSS, making Sass much more useful. To create a loop, you use "@for" and assign an iteration variable, again using "$" followed by the name. To call the value of the iteration variable, you use "#{$varname}". NOTE: In Sass, the range of iteration is INCLUSIVE on both bounds, as shown in the example below. </p>
     <img src="sass3.PNG"> <img src="sass4.PNG">
     <p>In the above example, the loops goes from 1 to 3, inclusive of both numbers. It declares that the HTML elements with ids "box-1", "box-2", and "box-3" each have widths incremented by 25 pixels. The converted CSS code turns out to become what is expected from the loop in the Sass file, saving us time from copy-and-pasting and making coding much faster!</p>
 
-    <h4>Mixins vs. Functions</h4>
+    <h4>Importing Partial Files</h4>
+    <p>Partial files are a great way to to separate blocks of code that you may want to use in multiple files.</p>
+    <p>For example, if you wanted to continue the same basic style between multiple webpages, you can import the partial file of that basic style into each page's individual SCSS file rather than rewriting the CSS for it each time.</p>
+    <p>Creating partial files also simply makes your code more easy to read and maintain. All partials files are named with a leading underscore (ex: _partial.scss).</p>
+
+    <p>In the example below, _partial.scss is our partial file containing some basic CSS.</p>
+    <img src="partials.png">
+    <p>Then in the SCSS file we write:</p>
+    <img src="importpartial.png">
+    <P>So when we compile the SCSS, the output CSS file will include the code block contained in the partial file.</P>
+    <img src="partialc.png">
+
+    <h4>Mixins</h4>
+    <p>Mixins are used to make repetitive CSS declarations (within the same file) more DRY. You can also pass parameters into you mixins to make them more flexible. Use @include to use your mixin anywhere in your code.</p>
+    <p>Below is a mixin in input.scss using a parameter:</p>
+    <img src="mixins.png">
+    <p>And when compiled, you get the following output.css file. </p>
+    <img src="mixinc.png">
 
     <h4>Extends</h4>
-    <!--Add image and short explanation>
+    <p>Extends are similar to mixins in that they both help to reduce repetitive code blocks. Extends allow you to share certain CSS properties between selectors.</p>
+    <p>In the example below, we have two extends, %equal-heights and %wow. Below %wow are two selectors which extend %wow. The @extend tells the compiler that you want to insert the block of CSS included in your extend (%wow) in that given selector (%wow-default or %wow-fancy). After you have extended, you can continue to add more CSS in that selector.</p>
+    <img src="extends.png">
+    <p>When the compiled, the CSS file looks like this:</p>
+    <img src="extendc.png">
+    <p>The first code block shows that the extended CSS now applies to both selectors, while the second code block shows us the additional CSS written only for that seclector. </p>
+    <p>You'll also notice that none of the %equal-heights extend is included in the final CSS file. This is because the @extend was never used anywhere to extend it, and since it was never used anywhere it isn't printed.</p>
 
+    <br>
+    <h3>Important Distinctions</h3>
+    <p>A few of these features may have looked very similar, so you may be wondering in which cases you should use a certain feature rather than another.</p>
+    <h4>When do I use a mixin vs a function?</h4>
+    <p>Use mixins to <i> include</i> and functions to <i> return</i>. </p>
+    <h4>What about a mixin vs an extend?</h4>
+    <p>You CAN always use mixins, but that doesn't always mean you should. It's better to use mixins only when you need to take arguments (extend doesn't take arguments).</p>
+    <br>
+
+    <center>
+      <b>
+        <p>You can find our entire code demo <a href=''>here</a> and our presentation <a href="https://docs.google.com/presentation/d/1nvNpZZK9a5RuxBUEYXCSd-AXGIWHEUSFIr2cO-PGhyE/edit?usp=sharing">here</a>.</p>
+        <p> We hope you found this helpful!</p>
+      </b>
+
+      <br>
+
+      <h2>stay DRY devos.</h2>
+    </center>
   </body>
 </html>
