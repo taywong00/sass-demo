@@ -3,21 +3,29 @@
 <html>
   <head>
     <title>Sass</title>
+    <style>
+    body{font-family: Helvetica;}
+    h2{color: #CC6699;}
+    img{width:20%;}
+    </style>
   </head>
 
   <body>
-    <h3>Sass - Syntactically Awesome Style Sheets</h3>
-    <h3>Team VivienDoesNotComeToSchool</h3>
-    <h3>Naotaka Kinoshita, Vivien Lee, Taylor Wong</h3>
+    <img style="width:30%;" src="logo.png">
+    <h2>Sass - Syntactically Awesome Style Sheets</h2>
+    <h2>Team VivienDoesNotComeToSchool</h2>
+    <h2>Naotaka Kinoshita, Vivien Lee, Taylor Wong</h2>
 
-    <h4>What is Sass?</h4>
+    </br>
+    <h3>What is Sass?</h3>
     <p>Sass is a CSS preprocessor that simplifies writing CSS. It adds a lot of features of programming languages to CSS, from functions to loops and much more. Sass makes more sense when writing CSS from a human point of view, and makes it so that you stay DRY (you Don't Repeat Yourself).</p>
     <p>Sass was created in 2006 by Hampton Caitlin and Natalie Weizenbaum, and Sass files originally ended in .sass. However, in the newest version of Sass, files end in .scss. .sass files use indentation rather than brackets to indicate the nesting of selectors, use newlines rather than semicolons to separate properties, and the syntax is more similar to that of Ruby, while .scss files are more like CSS.</p>
     <img src="diffs.jpg">
 
-    <h4>So how does it work?</h4>
+    </br>
+    <h3>So how does it work?</h3>
 
-    <h5>Installing and Using Sass</h5>
+    <h4>Installing and Using Sass</h4>
     To install and use Sass on a Linux machine, you should follow these steps:
     <ul>
       <li>Make sure you first have Ruby installed on your machine</li>
@@ -25,18 +33,21 @@
       <li>Write code in .scss or .sass files</li>
       <li>Run "sass [INPUT FILENAME] [OUTPUT FILENAME]" to convert to CSS</li>
     </ul>
-    
-    <h5>Functions in Sass</h5>
-    <!--Add image and short explanation--!>
 
-    <h5>Mixins vs. Functions</h5>
-    <!--Add image and short explanation--!>
+    <h4>Functions in Sass</h4>
+    <p>Like most other programming languages, Sass allows you to create and define functions, making writing CSS a lot more efficient. In Sass, function are declared using "@function", parameters are denoted with a "$" followed by the name, and the return statement is denoted with "@return".</p>
+    <img src="sass1.PNG"> <img src="sass2.PNG">
+    <p>As shown in the above example, creating functions in Sass can prove to be very useful. And when your Sass is converted into CSS, your code is ultimately much cleaner, efficient, and user-friendly.</p>
 
-    <h5>Loops in Sass</h5>
-    <!--Add image and short explanation--!>
+    <h4>Loops in Sass</h4>
+    <p>Like functions, loops are another feature of Sass that isn't present in CSS, making Sass much more useful. To create a loop, you use "@for" and assign an iteration variable, again using "$" followed by the name. To call the value of the iteration variable, you use "#{$varname}". NOTE: In Sass, the range of iteration is INCLUSIVE on both bounds, as shown in the example below. </p>
+    <img src="sass3.PNG"> <img src="sass4.PNG">
+    <p>In the above example, the loops goes from 1 to 3, inclusive of both numbers. It declares that the HTML elements with ids "box-1", "box-2", and "box-3" each have widths incremented by 25 pixels. The converted CSS code turns out to become what is expected from the loop in the Sass file, saving us time from copy-and-pasting and making coding much faster!</p>
 
-    <h5>Extends</h5>
-    <!--Add image and short explanation--!>
+    <h4>Mixins vs. Functions</h4>
+
+    <h4>Extends</h4>
+    <!--Add image and short explanation>
 
   </body>
 </html>
