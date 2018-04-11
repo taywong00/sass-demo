@@ -87,10 +87,17 @@
     <br>
     <h3>Important Distinctions</h3>
     <p>A few of these features may have looked very similar, so you may be wondering in which cases you should use a certain feature rather than another.</p>
+
     <h4>When do I use a mixin vs a function?</h4>
-    <p>Use mixins to <i> include</i> and functions to <i> return</i>. </p>
+    <p>Use mixins to <i> include</i> and functions to <i> return</i>. Mixins are used when you want to use a code block, but just uniformly interchange the values used. Functions are for when you actually want to perform an action on the parameters to return a new value.</p>
+    <img src="mvse.png">
+
     <h4>What about a mixin vs an extend?</h4>
     <p>You CAN always use mixins, but that doesn't always mean you should. It's better to use mixins only when you need to take arguments (extend doesn't take arguments).</p>
+    <p>An example of a <b>BAD</b> mixin would be this:</p>
+    <img src="badmixin.png">
+    <p>Let's try this using an extend:</p>
+    <img src="goodextend.png">
     <br>
 
     <center>
@@ -102,6 +109,7 @@
       <br>
 
       <h2>stay DRY devos.</h2>
+      <br><br><br><br><br><br>
     </center>
   </body>
 </html>
